@@ -18,11 +18,31 @@ class BsaleApi
     self.class.get("/v#{@version}/clients.#{@extension}", headers: @headers)
   end
 
-  def shippings
-    self.class.get("/v#{@version}/shippings.#{@extension}", headers: @headers)
+  def document(data, parameters)
+    self.class.send(parameters[:method].downcase, "/v#{@version}/documents.#{@extension}", headers: @headers, body: data.to_json)
+  end
+
+  def documents
+    self.class.get("/v#{@version}/documents.#{@extension}", headers: @headers)
+  end
+
+  def document_types
+    self.class.get("/v#{@version}/document_types.#{@extension}", headers: @headers)
+  end
+
+  def office(data, parameters)
+    self.class.send(parameters[:method].downcase, "/v#{@version}/offices.#{@extension}", headers: @headers, body: data.to_json)
+  end
+
+  def offices
+    self.class.get("/v#{@version}/offices.#{@extension}", headers: @headers)
   end
 
   def shipping(data, parameters)
     self.class.send(parameters[:method].downcase, "/v#{@version}/shippings.#{@extension}", headers: @headers, body: data.to_json)
+  end
+
+  def shippings
+    self.class.get("/v#{@version}/shippings.#{@extension}", headers: @headers)
   end
 end

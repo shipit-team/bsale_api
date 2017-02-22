@@ -1,21 +1,11 @@
 class Shipping
-  # attr_accessor :href,
-  #               :id,
-  #               :shipping_date,
-  #               :address,
-  #               :municipality,
-  #               :city,
-  #               :recipient,
-  #               :state,
-  #               office: [:href, :id],
-  #               :shipping_type,
   def initialize
     @object = {
-      documentTypeId: 10,
+      documentTypeId: 1,
       officeId: 1,
       expirationDate: 1409149934,
       emissionDate: 1409149934,
-      shippingTypeId: 6,
+      shippingTypeId: 1,
       municipality: "Puerto Varas",
       city: "Puerto Varas",
       address: "la quebrada 1005",
