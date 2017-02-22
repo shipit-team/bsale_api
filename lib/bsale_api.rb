@@ -15,6 +15,14 @@ class BsaleApi
   end
 
   def clients
-      self.class.get("/v#{@version}/clients.#{@extension}", headers: @headers )
+    self.class.get("/v#{@version}/clients.#{@extension}", headers: @headers)
+  end
+
+  def shippings
+    self.class.get("/v#{@version}/shippings.#{@extension}", headers: @headers)
+  end
+
+  def shipping(data, parameters)
+    self.class.send(parameters[:method].downcase, "/v#{@version}/shippings.#{@extension}", headers: @headers, body: data.to_json)
   end
 end
