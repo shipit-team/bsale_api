@@ -1,6 +1,8 @@
 require 'spec_helper'
 require 'pry-byebug'
 require 'bsale_api/shipping'
+require 'bsale_api/document'
+require 'bsale_api/office'
 
 describe BsaleApi do
   before(:each) do
@@ -24,10 +26,36 @@ describe BsaleApi do
       expect(shippings.response.code).to eq('200')
     end
 
-    it 'post shipping' do
-      data = Shipping.new
-      shipping = @bsale.shipping(data.object, { method: 'POST'})
-      expect(shipping.response.code).to eq('304')
+    it 'post shipping'
+  end
+
+  describe '#documents' do
+    it 'get documents' do
+      documents = @bsale.documents
+      expect(documents.response.code).to eq('200')
+    end
+
+    it 'post document'
+  end
+
+  describe '#offices' do
+    it 'get offices' do
+      offices = @bsale.offices
+      expect(offices.response.code).to eq('200')
+    end
+
+    it 'post office' do
+      data = Office.new
+      office = @bsale.office(data.object, { method: 'POST'})
+      expect(office.response.code).to eq('201')
     end
   end
+
+  describe '#document_types' do
+    it 'get document types' do
+      document_types = @bsale.document_types
+      expect(document_types.response.code).to eq('200')
+    end
+  end
+
 end
