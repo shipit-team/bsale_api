@@ -19,6 +19,12 @@ class BsaleApi
     self.class.get("/v#{@version}/clients#{@extension}", headers: @headers)
   end
 
+  def client(parameters, data = {})
+    self.class.send(parameters[:method].downcase,
+                    "/v#{@version}/clients#{parameters[:specific]}#{@extension}",
+                    headers: @headers, body: data.to_json)
+  end
+
   def document(parameters, data = {})
     self.class.send(parameters[:method].downcase,
                     "/v#{@version}/documents#{parameters[:specific]}#{@extension}",
