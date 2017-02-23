@@ -6,10 +6,10 @@ class BsaleApi
   include HTTParty
   base_uri 'https://api.bsale.cl'
 
-  def initialize(version = 1, extension = '.json')
+  def initialize(token = '', version = 1, extension = '.json')
     @headers = {
       'Content-Type' => 'application/json',
-      'access_token' => ENV['BSALE_TOKEN']
+      'access_token' => ENV['BSALE_TOKEN'] || token
     }
     @version = version
     @extension = extension
