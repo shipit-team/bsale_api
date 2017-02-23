@@ -7,7 +7,7 @@ class Shipping
       officeId: 1,
       expirationDate: 1_409_149_934,
       emissionDate: 1_409_149_934,
-      shippingTypeId: 6,
+      shippingTypeId: 1,
       municipality: 'Puerto Varas',
       city: 'Puerto Varas',
       address: 'la quebrada 1005',
