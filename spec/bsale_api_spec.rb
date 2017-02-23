@@ -19,10 +19,16 @@ describe BsaleApi do
     end
   end
 
-  describe '#shipping types' do
-    it 'get shipping types' do
-      shipping_types = @bsale.shipping_types
-      expect(shipping_types.response.code).to eq('200')
+  describe '#documents' do
+    it 'get documents' do
+      documents = @bsale.documents
+      expect(documents.response.code).to eq('200')
+    end
+
+    it 'post document' do
+      data = Document.new
+      document = @bsale.document(data.object, { method: 'POST' })
+      expect(document.response.code).to eq('201')
     end
   end
 
@@ -33,15 +39,6 @@ describe BsaleApi do
     end
   end
 
-  describe '#documents' do
-    it 'get documents' do
-      documents = @bsale.documents
-      expect(documents.response.code).to eq('200')
-    end
-
-    it 'post document'
-  end
-
   describe '#offices' do
     it 'get offices' do
       offices = @bsale.offices
@@ -50,14 +47,21 @@ describe BsaleApi do
 
     it 'get office' do
       data = Office.new
-      office = @bsale.office({ method: 'GET', specific: '/1' })
+      office = @bsale.office({ specific: '/1'} , { method: 'GET'})
       expect(office.response.code).to eq('200')
     end
 
     it 'post office' do
       data = Office.new
-      office = @bsale.office({ method: 'POST' }, data.object)
+      office = @bsale.office(data.object, { method: 'POST' })
       expect(office.response.code).to eq('201')
+    end
+  end
+
+  describe '#price_lists' do
+    it 'get price_lists' do
+      price_lists = @bsale.price_lists
+      expect(price_lists.response.code).to eq('200')
     end
   end
 
@@ -72,6 +76,17 @@ describe BsaleApi do
       expect(shipping.response.code).to eq('200')
     end
 
-    it 'post shipping'
+    it 'post shipping' do
+      data = Shipping.new
+      shipping = @bsale.shipping(data.object, {method: 'POST' })
+      expect(office.response.code).to eq('201')
+    end
+  end
+
+  describe '#shipping_types' do
+    it 'get shipping types' do
+      shipping_types = @bsale.shipping_types
+      expect(shipping_types.response.code).to eq('200')
+    end
   end
 end

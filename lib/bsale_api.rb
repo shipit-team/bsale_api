@@ -19,7 +19,7 @@ class BsaleApi
     self.class.get("/v#{@version}/clients#{@extension}", headers: @headers)
   end
 
-  def document(data, parameters)
+  def document(data = {}, parameters)
     self.class.send(parameters[:method].downcase, "/v#{@version}/documents#{@extension}", headers: @headers, body: data.to_json)
   end
 
@@ -31,7 +31,7 @@ class BsaleApi
     self.class.get("/v#{@version}/document_types#{@extension}", headers: @headers)
   end
 
-  def office(parameters, data = {})
+  def office(data = {}, parameters)
     self.class.send(parameters[:method].downcase,
                     "/v#{@version}/offices#{parameters[:specific]}#{@extension}",
                     headers: @headers, body: data.to_json)
@@ -41,7 +41,11 @@ class BsaleApi
     self.class.get("/v#{@version}/offices#{@extension}", headers: @headers)
   end
 
-  def shipping(parameters, data = {})
+  def price_lists
+    self.class.get("/v#{@version}/price_lists#{@extension}", headers: @headers)
+  end
+
+  def shipping(data = {}, parameters)
     self.class.send(parameters[:method].downcase,
                     "/v#{@version}/shippings#{parameters[:specific]}#{@extension}",
                     headers: @headers, body: data.to_json)
