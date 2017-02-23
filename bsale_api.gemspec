@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Nelson Pato Jimenez","Michel Szinavel"]
   spec.email         = ["developer.jimenez@gmail.com","michel.szinavel@gmail.com"]
 
-  spec.summary       = %q{ Wrapper for BSALE API}
+  spec.summary       = %q{ BSale Api }
   spec.description   = %q{ Wrapper for BSALE API}
-  spec.homepage      = "http://www.google.com"
+  spec.homepage      = "https://github.com/shipit-team/bsale_api"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -27,8 +27,10 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "dotenv"
+  spec.add_dependency "httparty", "~> 0.14.0"
+
   spec.add_development_dependency "bundler", "~> 1.12"
-  spec.add_development_dependency "httparty", "~> 0.14.0"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "pry-byebug", "~> 3.4.2"
