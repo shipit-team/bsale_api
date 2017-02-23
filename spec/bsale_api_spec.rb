@@ -17,12 +17,22 @@ describe BsaleApi do
       clients = @bsale.clients
       expect(clients.response.code).to eq('200')
     end
+
+    it 'get client' do
+      client = @bsale.client({ method: 'GET', specific: '/1' })
+      expect(client.response.code).to eq('201')
+    end
   end
 
   describe '#documents' do
     it 'get documents' do
       documents = @bsale.documents
       expect(documents.response.code).to eq('200')
+    end
+
+    it 'get document' do
+      document = @bsale.document({ method: 'GET', specific: '/1' })
+      expect(document.response.code).to eq('201')
     end
 
     it 'post document' do
