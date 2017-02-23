@@ -6,7 +6,7 @@ class BsaleApi
   include HTTParty
   base_uri 'https://api.bsale.cl'
 
-  def initialize(version=1, extension='.json')
+  def initialize(version = 1, extension = '.json')
     @headers = {
       'Content-Type' => 'application/json',
       'access_token' => ENV['BSALE_TOKEN']
@@ -19,8 +19,10 @@ class BsaleApi
     self.class.get("/v#{@version}/clients#{@extension}", headers: @headers)
   end
 
-  def document(data = {}, parameters)
-    self.class.send(parameters[:method].downcase, "/v#{@version}/documents#{@extension}", headers: @headers, body: data.to_json)
+  def document(parameters, data = {})
+    self.class.send(parameters[:method].downcase,
+                    "/v#{@version}/documents#{parameters[:specific]}#{@extension}",
+                    headers: @headers, body: data.to_json)
   end
 
   def documents
@@ -31,7 +33,7 @@ class BsaleApi
     self.class.get("/v#{@version}/document_types#{@extension}", headers: @headers)
   end
 
-  def office(data = {}, parameters)
+  def office(parameters, data = {})
     self.class.send(parameters[:method].downcase,
                     "/v#{@version}/offices#{parameters[:specific]}#{@extension}",
                     headers: @headers, body: data.to_json)
@@ -45,7 +47,7 @@ class BsaleApi
     self.class.get("/v#{@version}/price_lists#{@extension}", headers: @headers)
   end
 
-  def shipping(data = {}, parameters)
+  def shipping(parameters, data = {})
     self.class.send(parameters[:method].downcase,
                     "/v#{@version}/shippings#{parameters[:specific]}#{@extension}",
                     headers: @headers, body: data.to_json)
