@@ -27,7 +27,7 @@ describe BsaleApi do
 
     it 'post document' do
       data = Document.new
-      document = @bsale.document(data.object, { method: 'POST' })
+      document = @bsale.document({ method: 'POST' }, data.object)
       expect(document.response.code).to eq('201')
     end
   end
@@ -46,14 +46,13 @@ describe BsaleApi do
     end
 
     it 'get office' do
-      data = Office.new
-      office = @bsale.office({ specific: '/1'} , { method: 'GET'})
+      office = @bsale.office({ specific: '/1', method: 'GET' })
       expect(office.response.code).to eq('200')
     end
 
     it 'post office' do
       data = Office.new
-      office = @bsale.office(data.object, { method: 'POST' })
+      office = @bsale.office({ method: 'POST' }, data.object)
       expect(office.response.code).to eq('201')
     end
   end
@@ -78,8 +77,8 @@ describe BsaleApi do
 
     it 'post shipping' do
       data = Shipping.new
-      shipping = @bsale.shipping(data.object, {method: 'POST' })
-      expect(office.response.code).to eq('201')
+      shipping = @bsale.shipping({method: 'POST' }, data.object)
+      expect(shipping.response.code).to eq('201')
     end
   end
 
